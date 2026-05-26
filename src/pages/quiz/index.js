@@ -467,7 +467,8 @@ const Quiz = () => {
                   currentQuestionIndex + 1 >= questions.length
                 }
                 style={
-                  !selectedOption
+                  selectedOption !== null ||
+                  currentQuestionIndex + 1 >= questions.length
                     ? {
                         background: "#C0DDE9B2",
                         boxShadow: "0px 2px 2px 0px #C0DDE933",
