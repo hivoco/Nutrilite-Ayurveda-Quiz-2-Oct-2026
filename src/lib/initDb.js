@@ -157,7 +157,7 @@ export const QUESTIONS = [
   {
     question_id: 14,
     question_text:
-      "Which of the following are benefits of a weight management shake when combined with regular exercise and a calorie deficit? (Select all that apply)",
+      "Which of the following are benefits of a weight management shake when combined with regular exercise and a calorie deficit?",
     option_a: "Helps provide balanced nutrition",
     option_b: "Helps you feel fuller for longer",
     option_c: "Helps reduce cravings",

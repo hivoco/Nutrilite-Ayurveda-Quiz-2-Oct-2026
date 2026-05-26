@@ -143,10 +143,10 @@ const App = () => {
           />
         </div>
 
-        <div className=" sm:w sm:mx-auto tall:mt-15">
+        <div className="">
           <div
             className={`relative  mx-auto w-fit transition-all duration-700 ease-in-out ${
-              showRegister ? "h-[22vh] -translate-y-4" : "h-[50vh]"
+              showRegister ? "h-[20vh] tall:h-[22vh] -translate-y-4" : "h-[45vh] tall:h-[50vh]"
             } ${animation ? "translate-y-0 opacity-100" : "translate-y-30 opacity-0"}`}
           >
             {/* {showRegister && <ProductImageSlider />} */}
