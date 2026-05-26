@@ -163,8 +163,7 @@ export const QUESTIONS = [
     option_c: "Helps reduce cravings",
     option_d: "All of the above",
     correct_option: "D",
-    correct_option_value:
-      "Helps provide balanced nutrition, Helps you feel fuller for longer, Helps reduce cravings",
+    correct_option_value:"All of the above",
     explanation: "",
   },
   {
