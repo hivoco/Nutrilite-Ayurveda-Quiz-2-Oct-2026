@@ -8,7 +8,7 @@ Built with Next.js (Pages Router), React 19, Tailwind CSS v4, and MySQL.
 
 ```bash
 npm install
-cp .env.example .env   # then fill in your MySQL credentials
+# create .env.local with your MySQL credentials — see Environment below
 npm run dev            # http://localhost:3000
 ```
 
@@ -16,7 +16,7 @@ The database schema is created automatically on the first API call that touches 
 
 ## Environment
 
-Create a `.env` (or `.env.local`) in the project root:
+Create a `.env.local` in the project root. There is no checked-in `.env.example` — the variables are listed here. The standalone scripts read `.env.local` first and fall back to `.env`.
 
 | Variable | Purpose |
 | --- | --- |
@@ -24,7 +24,7 @@ Create a `.env` (or `.env.local`) in the project root:
 | `MYSQL_USER` | MySQL user |
 | `MYSQL_PASSWORD` | MySQL password |
 | `MYSQL_DATABASE` | Database name — created automatically if missing |
-| `ORG_ID` | Organisation identifier for the deployment |
+| `ORG_ID` | Organisation identifier. Present in existing `.env.local` files but not read anywhere in the code today — safe to omit on a fresh setup |
 
 ## Scripts
 
@@ -32,10 +32,13 @@ Create a `.env` (or `.env.local`) in the project root:
 | --- | --- |
 | `npm run dev` | Next.js dev server on port 3000 |
 | `npm run build` | Production build |
-| `npm start` | Production server on **port 6007** |
+| `npm start` | Production server on **port 6021** |
 | `npm run lint` | ESLint (`next lint`) |
 | `node reseed.mjs` | Drop and re-seed the `nfsu` question set from `src/lib/initDb.js` |
 | `node check.mjs` | Print row counts to confirm the DB is reachable and seeded |
+| `node export_results.js` | Write `results-<timestamp>.csv` with username, score, and pass columns |
+
+`scripts/reseed.mjs` is an older duplicate of the root `reseed.mjs` — both call `reseedAll()`, they only differ in how they parse the env file. Prefer the root one.
 
 ## How the app flows
 

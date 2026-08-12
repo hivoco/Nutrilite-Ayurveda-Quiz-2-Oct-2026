@@ -25,7 +25,7 @@ public/bg, public/logos, public/images, public/music   assets
 
 - **Use the design tokens, not raw hex.** `--color-primary` (`#007B48`) and friends are declared in `src/styles/globals.css` under `@theme inline`; write `text-primary` / `bg-primary` / `border-primary`. Raw `bg-[#007B48]`-style classes are the thing being migrated away from. The one legitimate exception is `<meta name="theme-color">` in `_app.js`, which cannot read a CSS variable.
 - **Tailwind v4 has no `tailwind.config.js`.** Tokens and variants live in CSS. A custom `tall` variant (`@media (min-height: 700px)`) exists for taller phones.
-- **Backgrounds go through `Layout`.** Pass `bgImage`, and optionally `topImage` / `bottomImage` for the decorative leaf strips, rather than setting a background on the page itself. `/bg/bg.png` is the photographic background; `/bg/bg-2.jpg` is the cream texture.
+- **Backgrounds go through `Layout`.** Pass `bgImage` (defaults to `/bg/bg.png`), and optionally `topImage` / `bottomImage` for the decorative leaf strips, rather than setting a background on the page itself. `/bg/bg.png` is the photographic background, `/bg/bg-2.jpg` the cream texture, `/bg/qbg.png` the quiz-screen variant.
 - **Contrast follows the background.** Cream background → green (`text-primary`) controls. Photo background → white controls. The home page switches both the background and the control colors on `showRegister`, and `Layout` swaps the Hivoco logo variant to match.
 - **Sizing is viewport-relative.** Screens are `h-svh` with no page scroll, so use `vh` units and `max-h-[Nvh]` caps on fixed-pixel images. A fixed `px` height that fits a tall phone will push the submit button off a short one.
 - **The correct answer never reaches the client.** `/api/get_all_question` omits it; `/api/verify` grades server-side. Keep it that way.
@@ -47,7 +47,9 @@ Questions are keyed by `lang` (default `english`) and `type` (default `nfsu`), w
 
 ## Gotchas
 
-- `npm start` serves on **port 6007**, `npm run dev` on 3000.
-- `src/pages/iosquiz/index.js` and `src/pages/register/index.js` are largely commented-out older variants of the quiz and registration screens. The live flow is `index.js` → `quiz/index.js` → `result/index.js`. Don't assume edits there have any effect.
+- `npm start` serves on **port 6021**, `npm run dev` on 3000.
+- `src/pages/iosquiz/index.js` and `src/pages/register/index.js` are largely commented-out older variants of the quiz and registration screens. The live flow is `index.js` → `quiz/index.js` → `result/index.js`. Don't assume edits there have any effect. `src/pages/platformQuiz.js`, `src/pages/loading/index.js`, and `src/pages/api/hello.js` are likewise off the live path.
+- `scripts/reseed.mjs` duplicates the root `reseed.mjs`. Same `reseedAll()` call, different env parsing. Edit the root one; the copy is dead weight.
+- `ORG_ID` appears in `.env.local` but no code reads `process.env.ORG_ID`. Don't wire new behaviour to it assuming it is already populated everywhere.
 - API error handlers deliberately echo the MySQL `code` and `message` in the 500 response — that is intentional for debugging this internal event tool, not an oversight to "fix".
 - Background music autoplays via `MusicContext` and is enabled by the first tap on the landing arrow (browsers block audio before a user gesture).
