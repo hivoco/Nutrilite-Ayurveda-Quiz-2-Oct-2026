@@ -38,7 +38,7 @@ function Result() {
   }, [router.isReady, score, passThreshold]);
 
   return (
-    <Layout>
+    <Layout bgImage="/bg/bg-2.jpg" bottomImage="/images/quiz/leaves.png">
       <div
         className={` relative  bg-no-repeat bg-cover bg-center  h-svh mx-auto flex flex-col p-7 transition-opacity duration-1000 ${
           isLoaded ? "opacity-100" : "opacity-0"
@@ -70,7 +70,7 @@ function Result() {
               }`}
             >
               <Image
-                src={"/logos/logo.png"}
+                src={"/logos/logo-inline.png"}
                 alt="Amway Nutrilite Plant Protein logo"
                 width={260}
                 height={60}
@@ -115,7 +115,7 @@ function Result() {
               {/* Result Card - slides up from bottom */}
 
               <div
-                className={`rounded-2xl p-7 w-full backdrop-blur-lg shadow-sm text-center transform transition-all  text-primary duration-1000 ease-out delay-500 bg-primary/10 ${
+                className={`rounded-2xl p-7 w-full  shadow-sm text-center transform transition-all  text-primary duration-1000 ease-out delay-500 bg-primary/20 ${
                   isLoaded ? "translate-y-0" : "translate-y-[100px]"
                 }`}
               >
@@ -145,7 +145,7 @@ function Result() {
             {/* {session && (
               <button
                 onClick={() => router.push(`/leaderboard?session=${session}&name=${encodeURIComponent(name)}`)}
-                className="w-full rounded-lg font-medium text-xl/6 text-white text-center py-3 transition-all bg-[#007B48]"
+                className="w-full rounded-lg font-medium text-xl/6 text-white text-center py-3 transition-all bg-primary"
               >
                 View Leaderboard
               </button>

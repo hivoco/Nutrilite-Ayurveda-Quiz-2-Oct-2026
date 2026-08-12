@@ -23,7 +23,7 @@ const Header = ({ className,animation }) => {
         animation ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"
       }
         `}
-        src={"/logos/hivoco-color-logo-black-text.png"}
+        src={"/logos/hivoco-white-text.png"}
         width={123}
         height={20}
         alt="Powered by Hivoco"

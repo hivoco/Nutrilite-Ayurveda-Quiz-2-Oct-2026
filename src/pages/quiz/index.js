@@ -296,7 +296,7 @@ const Quiz = () => {
   }
 
   return (
-    <Layout>
+    <Layout bgImage="/bg/bg-2.jpg" bottomImage="/images/quiz/leaves.png">
       <div
         className={`pt-[3.5vh] pb-[8vh] h-svh max-w-md mx-auto grid grid-rows-[auto_1fr]  overflow-y-auto transition-opacity duration-500 ease-in-out ${
           animation ? "opacity-100" : "opacity-0"

@@ -70,7 +70,7 @@ const SplashScreen = () => {
                 : "translate-y-30 opacity-0"
               }
               `}
-            src={"/logos/hivoco-color-logo-black-text.png"}
+            src={"/logos/hivoco-white-text.png"}
             width={267}
             height={45}
             alt="Powered by Hivoco"

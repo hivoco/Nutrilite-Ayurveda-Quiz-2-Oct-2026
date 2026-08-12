@@ -21,7 +21,7 @@ const ProgressBar = ({ count, animation, totalSteps = 10 }) => {
         <div
           key={index}
           className={`w-3 h-3 rounded-full z-10 transition-all duration-300 ease-out flex items-center justify-center
-                ${index + 1 <= count ? "bg-[#007B48]" : "bg-[#BFBFBF]"}`}
+                ${index + 1 <= count ? "bg-primary" : "bg-[#BFBFBF]"}`}
         />
       ))}
     </div>

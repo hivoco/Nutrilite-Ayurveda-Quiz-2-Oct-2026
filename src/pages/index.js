@@ -97,14 +97,14 @@ const App = () => {
   const getStatusIcon = () => {
     if (!Name.trim() || !hasSession) return null;
     if (isCheckingName)
-      return <span className="text-[#007B48] animate-pulse">...</span>;
+      return <span className="text-primary animate-pulse">...</span>;
     if (isExit === true)
       return <X size={20} className="text-red-500" strokeWidth={1.5} />;
     if (isExit === false)
       return (
         <CircleCheck
           size={20}
-          className="text-white fill-[#007B48]"
+          className="text-white fill-primary"
           strokeWidth={1.5}
         />
       );
@@ -122,11 +122,15 @@ const App = () => {
   return (
     <Layout
       // className="bg-black"
+      bgImage={showRegister ? "/bg/bg-2.jpg" : "/bg/bg.png"}
+      bottomImage={showRegister ? "/images/quiz/leaves.png" : undefined}
       animation={animation}
     >
-      <div className="relative h-full w-full z-50 overflow-hidden">
+      <div className="relative h-full w-full z-50 overflow-hidden flex flex-col">
         <div
-          className={`flex items-center justify-center gap-3  pt-[8vh] pb-[5vh] overflow-hidden
+          className={`flex items-center justify-center gap-3 overflow-hidden ${
+            showRegister ? "pt-[5vh] pb-[2vh]" : "pt-[8vh] pb-[5vh]"
+          }
             transition-all duration-1000 ease-in-out ${
               animation
                 ? "translate-y-0 opacity-100"
@@ -135,7 +139,7 @@ const App = () => {
           `}
         >
           <Image
-            src={"/logos/logo.png"}
+            src={showRegister ? "/logos/logo-inline.png" : "/logos/logo.png"}
             width={260}
             height={60}
             alt="Amway Nutrilite Plant Protein logo"
@@ -143,33 +147,13 @@ const App = () => {
           />
         </div>
 
-        <div className="">
+        <div className="flex-1 flex flex-col min-h-0">
           <div
             className={`relative  mx-auto w-fit transition-all duration-700 ease-in-out ${
-              showRegister ? "h-[20vh] tall:h-[22vh] -translate-y-4" : "h-[45vh] tall:h-[50vh]"
+              showRegister ? "h-0" : "h-[45vh] tall:h-[50vh]"
             } ${animation ? "translate-y-0 opacity-100" : "translate-y-30 opacity-0"}`}
           >
             {/* {showRegister && <ProductImageSlider />} */}
-
-            <Image
-              className={`object-cover w-screen h-auto transition-opacity delay-200 duration-700 ease-in-out ${!showRegister ? "scale-100" : "opacity-0"}`}
-              alt="amway nutrilite daily plus multi vitamin"
-              width={300}
-              height={240}
-              src="/images/products/image.png"
-              priority={true}
-              quality={100}
-            />
-
-            <Image
-              className={`absolute inset-0 h-full w-auto mx-auto transition-opacity delay-200 duration-700 ease-in-out ${showRegister ? "opacity-100" : "opacity-0"}`}
-              alt="amway nutrilite plant protein"
-              width={300}
-              height={200}
-              src="/images/products/image.png"
-              priority={true}
-              quality={100}
-            />
           </div>
 
           {!showRegister && (
@@ -181,7 +165,7 @@ const App = () => {
                   : "translate-y-20 opacity-0"
               }`}
             >
-              <span className="w-16 h-16 flex items-center justify-center border-2 bg-primary/20 backdrop-blur-xs border-primary rounded-full text-primary mt-[4vh] cursor-pointer hover:bg-primary hover:text-white transition-colors">
+              <span className="w-16 h-16 flex items-center justify-center border-2 bg-white/20 backdrop-blur-xs border-white rounded-full text-white mt-[4vh] cursor-pointer hover:bg-white hover:text-primary transition-colors">
                 <ArrowRight size={32} strokeWidth={2} />
               </span>
             </button>
@@ -189,61 +173,72 @@ const App = () => {
 
           {showRegister && (
             <section
-              className={`flex w-4/5 mx-auto flex-col gap-7 sm:gap-2 mt-6 transition-all duration-700 delay-200 ease-in-out   ${
+              className={`flex flex-1 min-h-0 w-4/5 mx-auto flex-col gap-[2.5vh] mt-2 transition-all duration-700 delay-200 ease-in-out   ${
                 showRegister
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
               }`}
             >
+
+              <Image
+                className="h-[36vh] max-h-[330px] w-auto object-contain shrink-0 mx-auto"
+                src="/images/products/image.png"
+                width={300}
+                height={250}
+                alt="nutrilite ayurveda product"
+                priority={true}
+                quality={100}
+              />
+
               <div className="flex flex-col gap-2 items-center">
-                <h1 className="font-bold text-xl/7 text-primary text-center">
+                <h1 className="font-bold text-2xl/7 uppercase tracking-wide text-primary text-center">
                   User Registration
                 </h1>
               </div>
 
-              <div className="w-full flex flex-col gap-1 justify-center">
+              <div className="w-full flex flex-col gap-2 justify-center">
                 <input
                   type="text"
                   enterKeyHint="enter"
                   inputMode="text"
-                  placeholder=" Your name"
-                  className="font-light text-sm/6 text-center align-middle text-primary capitalize py-3.5 px-5 rounded-lg outline-1 outline-white placeholder:text-primary bg-primary/10"
+                  placeholder="Your Name"
+                  className="font-light text-lg/6 text-center align-middle text-primary uppercase tracking-wide py-4 px-5 rounded-xl border border-primary placeholder:text-primary/70 bg-primary/5"
                   value={Name}
                   onChange={(e) => setName(e.target.value)}
                   onKeyDown={(e) =>
                     e.key === "Enter" && canContinue && goForward()
                   }
                 />
-                {hasSession && Name.trim() && (
-                  <label
-                    className={`font-medium flex items-center gap-1 text-sm/4 text-left px-5 ${
-                      isExit === null
-                        ? "text-gray-400"
-                        : isExit === false
-                          ? "text-[#007B48]"
-                          : "text-red-500"
-                    }`}
-                  >
-                    {isExit === false
+                <label
+                  className={`font-medium flex items-center justify-center gap-1 text-sm/4 uppercase tracking-wide text-center ${
+                    !hasSession || !Name.trim() || isExit === null
+                      ? "text-primary/70"
+                      : isExit === false
+                        ? "text-primary"
+                        : "text-red-500"
+                  }`}
+                >
+                  {!hasSession || !Name.trim()
+                    ? "Unique ID"
+                    : isExit === false
                       ? "Username available"
                       : isExit === true
                         ? "Username already taken in this session"
                         : "Checking availability..."}
-                    {getStatusIcon()}
-                  </label>
-                )}
+                  {getStatusIcon()}
+                </label>
               </div>
 
               <button
                 onClick={goForward}
                 disabled={!canContinue}
-                className={` flex mx-auto mt-10 transition-all ${canContinue ? "cursor-pointer" : "cursor-not-allowed"}`}
+                className={` flex mx-auto mt-auto mb-[calc(min(13.4vw,100px)_+_54px)] shrink-0 transition-all ${canContinue ? "cursor-pointer" : "cursor-not-allowed"}`}
               >
                 <span
-                  className={`w-16 h-16 flex items-center justify-center border-1 rounded-full transition-colors border-primary  ${
+                  className={`w-16 h-16 flex items-center justify-center border rounded-full transition-colors border-primary  ${
                     canContinue
-                      ? "bg-primary text-white hover:bg-white hover:text-primary"
-                      : " text-primary"
+                      ? "bg-primary/10 text-primary hover:bg-primary hover:text-white"
+                      : " text-primary/50"
                   }`}
                 >
                   <ArrowRight size={32} strokeWidth={2} />

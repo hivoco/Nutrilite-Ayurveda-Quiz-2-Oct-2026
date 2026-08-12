@@ -13,7 +13,7 @@ const Loading = () => {
       className={`relative w-full h-svh
     `}
     >
-      <Layout>
+      <Layout bgImage="/bg/bg-2.jpg" bottomImage="/images/quiz/leaves.png">
         <>
           <Header />
           <div className="absolute top-1/2 -translate-y-1/2 w-full  flex  flex-col  gap-30 sm:gap-10">
