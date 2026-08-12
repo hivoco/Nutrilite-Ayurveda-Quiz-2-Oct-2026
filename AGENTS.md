@@ -37,6 +37,8 @@ public/bg, public/logos, public/images, public/music   assets
 
 To change the question set, edit `QUESTIONS` in `src/lib/initDb.js`, then run `node reseed.mjs` (deletes and re-inserts `type = 'nfsu'`). `node check.mjs` verifies connectivity and row counts. `POST /api/setup` does the same reseed over HTTP.
 
+The live set is 25 questions — Moringa/Shigru, Garcinia/Vrikshamla, Kalamegha, then applied positioning questions. Quiz length is never hardcoded: `questions.length` drives the counter, `ProgressBar`, the submit-vs-next branch, and the `total` passed to `/result`. Changing the array length is sufficient. Two stale-looking defaults are harmless fallbacks, not the source of truth: `quiz_results.total_questions` defaults to 10 in the DDL, and `/result` falls back to `total = 10` when the query param is missing.
+
 Questions are keyed by `lang` (default `english`) and `type` (default `nfsu`), which is how alternate question banks are kept apart.
 
 ## Verifying changes
@@ -51,5 +53,7 @@ Questions are keyed by `lang` (default `english`) and `type` (default `nfsu`), w
 - `src/pages/iosquiz/index.js` and `src/pages/register/index.js` are largely commented-out older variants of the quiz and registration screens. The live flow is `index.js` → `quiz/index.js` → `result/index.js`. Don't assume edits there have any effect. `src/pages/platformQuiz.js`, `src/pages/loading/index.js`, and `src/pages/api/hello.js` are likewise off the live path.
 - `scripts/reseed.mjs` duplicates the root `reseed.mjs`. Same `reseedAll()` call, different env parsing. Edit the root one; the copy is dead weight.
 - `ORG_ID` appears in `.env.local` but no code reads `process.env.ORG_ID`. Don't wire new behaviour to it assuming it is already populated everywhere.
+- `quiz/index.js` clamps the image height for `question_id === 12` specifically. That was tuned for an older question set. No question in the current set carries an `image_url`, so the branch is dead today — but if you add images, that hardcoded `12` will silently apply to whichever question now holds that id.
+- Keep `correct_option` and `correct_option_value` in sync when editing `QUESTIONS`. `/api/verify` grades on the letter, the result screen shows the value, so a mismatch grades correctly while displaying the wrong answer text.
 - API error handlers deliberately echo the MySQL `code` and `message` in the 500 response — that is intentional for debugging this internal event tool, not an oversight to "fix".
 - Background music autoplays via `MusicContext` and is enabled by the first tap on the landing arrow (browsers block audio before a user gesture).

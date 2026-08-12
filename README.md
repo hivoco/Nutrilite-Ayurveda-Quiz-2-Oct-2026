@@ -2,6 +2,8 @@
 
 A mobile-first quiz web app built for Amway Nutrilite Ayurveda product-knowledge events. A participant opens the app on a phone, registers a name, answers a timed multiple-choice quiz, and lands on a result screen with a leaderboard for their event session.
 
+The current question set ("Quiz 2") is **25 questions** covering three herbs: Moringa/Shigru (Q1–5), Garcinia/Vrikshamla (Q6–13), and Kalamegha (Q14–21), followed by four applied positioning questions (Q22–25). Passing is 80% of the total, so 20/25.
+
 Built with Next.js (Pages Router), React 19, Tailwind CSS v4, and MySQL.
 
 ## Quick start
@@ -69,7 +71,9 @@ MySQL via a `mysql2` pool in `src/lib/db.js`. Every `query()` call first awaits 
 
 Tables: `questions`, `users`, `sessions`, `quiz_results`.
 
-Questions are seeded from the `QUESTIONS` array in `src/lib/initDb.js` — edit that array and run `node reseed.mjs` to publish changes.
+Questions are seeded from the `QUESTIONS` array in `src/lib/initDb.js` — edit that array and run `node reseed.mjs` to publish changes. `reseed.mjs` creates the database if it does not exist, so pointing `MYSQL_DATABASE` at a fresh name and running it is enough to stand up a new event database. Reseeding only touches rows with `type = 'nfsu'`; participants and results are left alone.
+
+The number of questions is not fixed anywhere in the UI — the quiz, progress bar, and result screen all read `questions.length`, so changing the array length is the only step needed to change quiz length.
 
 ## Theming
 
