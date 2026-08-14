@@ -8,6 +8,12 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+// Social crawlers (WhatsApp, Facebook, LinkedIn, X) ignore relative image
+// paths, so share images must be absolute. Set NEXT_PUBLIC_SITE_URL per deploy.
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://nfsu-nsts.thefirstimpression.ai";
+const shareImage = `${siteUrl}/logos/logo.png`;
+
 export default function App({ Component, pageProps }) {
   return (
     <SessionProvider>
@@ -27,7 +33,7 @@ export default function App({ Component, pageProps }) {
             content="Amway, Nutrilite, Nutrilite Ayurveda, Amway Nutrilite Ayurveda Range, Shigru, Kalamegha, Garcinia, Ayurvedic Supplements, Herbal Supplements, Ayurvedic Herbs, Amway Ayurveda"
           />
           <meta name="author" content="Amway Nutrilite" />
-          <meta name="robots" content="index, follow" />
+          <meta name="robots" content="noindex, nofollow" />
           <meta name="theme-color" content="#007B48" />
           <meta name="application-name" content="Nutrilite Ayurveda Range" />
 
@@ -40,7 +46,7 @@ export default function App({ Component, pageProps }) {
             property="og:site_name"
             content="Amway Nutrilite Ayurveda Range"
           />
-          <meta property="og:image" content="/logos/logo.png" />
+          <meta property="og:image" content={shareImage} />
           <meta
             property="og:image:alt"
             content="Amway Nutrilite Ayurveda Range logo"
@@ -52,7 +58,7 @@ export default function App({ Component, pageProps }) {
             name="twitter:title"
             content="Introducing Amway Nutrilite Ayurveda Range that includes Shigru, Kalamegha & Garcinia. Every herb has a story. We make sure it's true."
           />
-          <meta name="twitter:image" content="/logos/logo.png" />
+          <meta name="twitter:image" content={shareImage} />
           <meta
             name="twitter:image:alt"
             content="Amway Nutrilite Ayurveda Range logo"
