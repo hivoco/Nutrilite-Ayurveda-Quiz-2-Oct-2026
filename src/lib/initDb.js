@@ -54,7 +54,7 @@ export const QUESTIONS = [
   {
     question_id: 5,
     question_text:
-      "In a value-based ABO conversation, Shigru/Moringa is best positioned as supporting:",
+      "Shigru (Moringa) is best known for supporting:",
     option_a: "Overall nourishment and daily vitality",
     option_b: "Only weight loss",
     option_c: "Only hair growth",
