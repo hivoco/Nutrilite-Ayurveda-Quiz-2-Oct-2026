@@ -180,15 +180,28 @@ const App = () => {
               }`}
             >
 
-              <Image
-                className="h-[36vh] max-h-[330px] w-auto object-contain shrink-0 mx-auto"
-                src="/images/products/image.png"
-                width={300}
-                height={250}
-                alt="nutrilite ayurveda product"
-                priority={true}
-                quality={100}
-              />
+              <div className="flex items-end justify-center w-full max-w-[340px] h-[36vh] max-h-[330px] shrink-0 mx-auto">
+                {[
+                  { src: "/images/herbs/tulsi.png", alt: "nutrilite ayurveda tulsi tablet", w: 268, h: 389 },
+                  { src: "/images/herbs/ashwagandha.png", alt: "nutrilite ayurveda ashwagandha tablet", w: 248, h: 397, center: true },
+                  { src: "/images/herbs/brahmi.png", alt: "nutrilite ayurveda brahmi tablet", w: 274, h: 397 },
+                ].map((p) => (
+                  <Image
+                    key={p.src}
+                    className={`h-auto object-contain ${
+                      p.center
+                        ? "relative z-10 w-[38%] max-h-full -mx-[4%]"
+                        : "w-[33%] max-h-[85%]"
+                    }`}
+                    src={p.src}
+                    width={p.w}
+                    height={p.h}
+                    alt={p.alt}
+                    priority={true}
+                    quality={100}
+                  />
+                ))}
+              </div>
 
               <div className="flex flex-col gap-2 items-center">
                 <h1 className="font-bold text-2xl/7 uppercase tracking-wide text-primary text-center">

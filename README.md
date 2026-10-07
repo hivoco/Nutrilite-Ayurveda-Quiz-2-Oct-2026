@@ -2,7 +2,7 @@
 
 A mobile-first quiz web app built for Amway Nutrilite Ayurveda product-knowledge events. A participant opens the app on a phone, registers a name, answers a timed multiple-choice quiz, and lands on a result screen with a leaderboard for their event session.
 
-The current question set ("Quiz 2") is **25 questions** covering three herbs: Moringa/Shigru (Q1–5), Garcinia/Vrikshamla (Q6–13), and Kalamegha (Q14–21), followed by four applied positioning questions (Q22–25). Passing is 80% of the total, so 20/25.
+The current question set (Ayurveda Phase 2, "Quiz 2") is **10 questions** covering Tulsi, Brahmi and Ashwagandha, taken from `docs/Quiz questions_Ayurveda_Phase 2.docx`. Passing is 80% of the total, so 8/10.
 
 Built with Next.js (Pages Router), React 19, Tailwind CSS v4, and MySQL.
 

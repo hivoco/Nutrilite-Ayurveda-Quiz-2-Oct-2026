@@ -37,7 +37,7 @@ public/bg, public/logos, public/images, public/music   assets
 
 To change the question set, edit `QUESTIONS` in `src/lib/initDb.js`, then run `node reseed.mjs` (deletes and re-inserts `type = 'nfsu'`). `node check.mjs` verifies connectivity and row counts. `POST /api/setup` does the same reseed over HTTP.
 
-The live set is 25 questions — Moringa/Shigru, Garcinia/Vrikshamla, Kalamegha, then applied positioning questions. Quiz length is never hardcoded: `questions.length` drives the counter, `ProgressBar`, the submit-vs-next branch, and the `total` passed to `/result`. Changing the array length is sufficient. Two stale-looking defaults are harmless fallbacks, not the source of truth: `quiz_results.total_questions` defaults to 10 in the DDL, and `/result` falls back to `total = 10` when the query param is missing.
+The live set is 10 questions on Tulsi, Brahmi and Ashwagandha (Ayurveda Phase 2, source: `docs/Quiz questions_Ayurveda_Phase 2.docx`). Quiz length is never hardcoded: `questions.length` drives the counter, `ProgressBar`, the submit-vs-next branch, and the `total` passed to `/result`. Changing the array length is sufficient. Two stale-looking defaults are harmless fallbacks, not the source of truth: `quiz_results.total_questions` defaults to 10 in the DDL, and `/result` falls back to `total = 10` when the query param is missing.
 
 Questions are keyed by `lang` (default `english`) and `type` (default `nfsu`), which is how alternate question banks are kept apart.
 
