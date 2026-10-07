@@ -49,7 +49,7 @@ Questions are keyed by `lang` (default `english`) and `type` (default `nfsu`), w
 
 ## Gotchas
 
-- `npm start` serves on **port 6021**, `npm run dev` on 3000.
+- `npm start` serves on **port 6025**, `npm run dev` on 3000.
 - `src/pages/iosquiz/index.js` and `src/pages/register/index.js` are largely commented-out older variants of the quiz and registration screens. The live flow is `index.js` → `quiz/index.js` → `result/index.js`. Don't assume edits there have any effect. `src/pages/platformQuiz.js`, `src/pages/loading/index.js`, and `src/pages/api/hello.js` are likewise off the live path.
 - `scripts/reseed.mjs` duplicates the root `reseed.mjs`. Same `reseedAll()` call, different env parsing. Edit the root one; the copy is dead weight.
 - `ORG_ID` appears in `.env.local` but no code reads `process.env.ORG_ID`. Don't wire new behaviour to it assuming it is already populated everywhere.

@@ -34,7 +34,7 @@ Create a `.env.local` in the project root. There is no checked-in `.env.example`
 | --- | --- |
 | `npm run dev` | Next.js dev server on port 3000 |
 | `npm run build` | Production build |
-| `npm start` | Production server on **port 6021** |
+| `npm start` | Production server on **port 6025** |
 | `npm run lint` | ESLint (`next lint`) |
 | `node reseed.mjs` | Drop and re-seed the `nfsu` question set from `src/lib/initDb.js` |
 | `node check.mjs` | Print row counts to confirm the DB is reachable and seeded |
