@@ -20,7 +20,7 @@ const AnswerPopup = ({ isVisible, isCorrect }) => {
         <div className="flex flex-col gap-2 text-center justify-center items-center">
           <Image
             src="/images/quiz/right.png"
-            alt="Correct answer in the Amway Nutrilite Plant Protein Quiz"
+            alt="Correct answer in the Amway Nutrilite Ayurveda Quiz"
             width={150}
             height={120}
             className="w-full object-contain"
@@ -34,7 +34,7 @@ const AnswerPopup = ({ isVisible, isCorrect }) => {
         <div className="flex flex-col gap-2 text-center justify-center items-center">
           <Image
             src="/images/quiz/oops-white.png"
-            alt="Wrong answer in the Amway Nutrilite Plant Protein Quiz"
+            alt="Wrong answer in the Amway Nutrilite Ayurveda Quiz"
             width={160}
             height={144}
             className="w-full object-contain"
@@ -369,7 +369,7 @@ const Quiz = () => {
               {currentQuestion.image_url && (
                 <Image
                   src={currentQuestion.image_url}
-                  alt={`Amway Nutrilite Plant Protein Quiz – question ${currentQuestion.question_id} illustration`}
+                  alt={`Amway Nutrilite Ayurveda Quiz – question ${currentQuestion.question_id} illustration`}
                   width={320}
                   height={200}
                   onClick={() => setIsImageZoomed(true)}

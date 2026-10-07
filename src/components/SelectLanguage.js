@@ -35,7 +35,7 @@ const SelectLanguage = ({animation}) => {
                     : "translate-y-50 opacity-0"
                 }
                 `}
-              alt={`Select ${l} language for the Amway Nutrilite Plant Protein Quiz`}
+              alt={`Select ${l} language for the Amway Nutrilite Ayurveda Quiz`}
             />
           );
         })}

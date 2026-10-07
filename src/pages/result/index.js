@@ -71,7 +71,7 @@ function Result() {
             >
               <Image
                 src={"/logos/logo-inline.png"}
-                alt="Amway Nutrilite Plant Protein logo"
+                alt="Amway Nutrilite Ayurveda logo"
                 width={260}
                 height={60}
               />
@@ -94,8 +94,8 @@ function Result() {
                   }
                   alt={
                     score >= passThreshold
-                      ? "Trophy for passing the Amway Nutrilite Plant Protein Quiz"
-                      : "Better luck next time on the Amway Nutrilite Plant Protein Quiz"
+                      ? "Trophy for passing the Amway Nutrilite Ayurveda Quiz"
+                      : "Better luck next time on the Amway Nutrilite Ayurveda Quiz"
                   }
                   width={score >= passThreshold ? 220 : 190}
                   height={score >= passThreshold ? 240 : 152}

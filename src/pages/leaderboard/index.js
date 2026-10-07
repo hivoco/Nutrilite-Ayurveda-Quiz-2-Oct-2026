@@ -120,7 +120,7 @@ const LeaderBoard = () => {
               animation ? "scale-100" : "scale-50"
             }
               `}
-              alt="Top scorer trophy for the Amway Nutrilite Plant Protein Quiz leaderboard"
+              alt="Top scorer trophy for the Amway Nutrilite Ayurveda Quiz leaderboard"
               width={150}
               height={150}
               src="/images/trophy.png"

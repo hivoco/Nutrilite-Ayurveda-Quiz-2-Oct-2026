@@ -142,7 +142,7 @@ const App = () => {
             src={showRegister ? "/logos/logo-inline.png" : "/logos/logo.png"}
             width={260}
             height={60}
-            alt="Amway Nutrilite Plant Protein logo"
+            alt="Amway Nutrilite Ayurveda logo"
             priority={true}
           />
         </div>
